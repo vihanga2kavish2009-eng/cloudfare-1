@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - VK Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .link-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .link-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .link-info a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        .btn-danger:hover {
+            background: #ef4444;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+
+    <nav class="navbar">
+        <div class="logo">VK<span>.admin</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">← Back to Site</a></li>
+        </ul>
+    </nav>
+
+    <main class="admin-container" id="login-container">
+        <div class="section-title">
+            <h2>Admin Login</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="glass-card" style="padding: 2rem; max-width: 400px; margin: 0 auto; text-align: center;">
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Please enter your password to continue.</p>
+            <form id="login-form">
+                <div class="form-group" style="text-align: left;">
+                    <label>Password</label>
+                    <input type="password" id="admin-password" required class="input-group input"
+                        style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;"
+                        placeholder="Enter password">
+                </div>
+                <p id="login-error" style="color: #ef4444; display: none; font-size: 0.9rem; margin-bottom: 1rem;">
+                    Incorrect password!</p>
+                <button type="submit" class="btn primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <main class="admin-container" id="admin-main" style="display: none;">
+        <div class="section-title">
+            <h2>Manage Private Links</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="glass-card" style="padding: 2rem;">
+            <form id="add-link-form">
+                <div class="form-group">
+                    <label>Website Title</label>
+                    <input type="text" id="link-title" required class="input-group input"
+                        style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;"
+                        placeholder="e.g. My Secret Dashboard">
+                </div>
+                <div class="form-group">
+                    <label>Website URL</label>
+                    <input type="url" id="link-url" required class="input-group input"
+                        style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;"
+                        placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Short Description (Optional)</label>
+                    <input type="text" id="link-desc" class="input-group input"
+                        style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;"
+                        placeholder="Private analytics tool...">
+                </div>
+                <button type="submit" class="btn primary" style="width: 100%; margin-top: 1rem;">Add Link</button>
+            </form>
+        </div>
+
+        <div class="link-list" id="admin-links-container">
+            <!-- Dynamic Links via JS -->
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
